@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using SE310_WebAPI.Models;
+using SE310_28102024.Models;
+using SE310_28102024.Models.Authentication;
 using System.Diagnostics;
 using X.PagedList;
 
@@ -10,18 +11,19 @@ namespace WebBanThucAn.Controllers
     {
         private readonly ILogger<HomeController> _logger;
 
-        HanghoaContext db = new HanghoaContext();
+        ProductContext db = new ProductContext();
 
         public HomeController(ILogger<HomeController> logger)
         {
             _logger = logger;
         }
+        [Authentication]
         public IActionResult Index(int? page)
         {
             int pageSize = 8;
             int pageNumber = page == null || page < 0 ? 1 : page.Value;
-            var lstSanPham = db.HangHoas.AsNoTracking().OrderBy(x => x.TenHang);
-            PagedList<HangHoa> lst = new PagedList<HangHoa>(lstSanPham, pageNumber, pageSize);
+            var lstSanPham = db.Products.AsNoTracking().OrderBy(x => x.ProductName);
+            PagedList<Product> lst = new PagedList<Product>(lstSanPham, pageNumber, pageSize);
             
             return View(lst);
         }

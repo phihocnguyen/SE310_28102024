@@ -1,6 +1,5 @@
-﻿@using WebBanThucAn.Models;
-@using X.PagedList.Mvc.Core;
-@model X.PagedList.IPagedList<TDanhMucSp>
+﻿@using SE310_28102024.Models
+@model X.PagedList.IPagedList<Product>
 
 @{
     ViewData["Title"] = "DanhMucSanPham";
@@ -18,25 +17,16 @@
     <thead>
         <tr class="table-warning">
             <th>
-                Tên sản phẩm
+                Tên hàng hóa
             </th>
             <th>
-                Cân nặng
+                Số lượng
             </th>
             <th>
-                Độ nới
+                Giá
             </th>
             <th>
-                Thời gian bảo hành
-            </th>
-            <th>
-                Chiết khấu
-            </th>
-            <th>
-                Giá nhỏ nhất
-            </th>
-            <th>
-                Giá lớn nhất
+                Mô tả
             </th>
             <th></th>
         </tr>
@@ -55,35 +45,26 @@
             }
             <tr class = "@cls">
             <td>
-                @Html.DisplayFor(modelItem => item.TenSp)
+                @Html.DisplayFor(modelItem => item.ProductName)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.CanNang)
+                @Html.DisplayFor(modelItem => item.Quantity)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.DoNoi)
+                @Html.DisplayFor(modelItem => item.Price)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.ThoiGianBaoHanh)
+                @Html.DisplayFor(modelItem => item.Description)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.ChietKhau)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.GiaNhoNhat)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.GiaLonNhat)
-            </td>
-            <td>
-                <a asp-action="SuaSanPham" asp-route-maSanPham="@item.MaSp">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.MaSp">Details</a> |
-                <a asp-action="XoaSanPham" asp-route-maSanPham="@item.MaSp">Delete</a>
+                <a asp-action="SuaSanPham" asp-route-Id="@item.Id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="XoaSanPham" asp-route-Id="@item.Id">Delete</a>
             </td>
         </tr>
 }
     </tbody>
 </table>
-<div class="product__pagination">
+@*<div class="product__pagination">
     @Html.PagedListPager(Model, page => Url.Action("DanhMucSanPham", new {page = page}))
-</div>
+</div>*@

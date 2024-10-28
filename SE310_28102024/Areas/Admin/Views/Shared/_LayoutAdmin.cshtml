@@ -57,8 +57,8 @@
                                 <i class="mdi mdi-cached me-2 text-success"></i> Activity Log
                             </a>
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="#">
-                                <i class="mdi mdi-logout me-2 text-primary"></i> Signout
+                            <a asp-controller="Access" asp-action="Logout"  class="dropdown-item">
+                                <i class="mdi mdi-logout me-2 text-primary"></i> Logout
                             </a>
                         </div>
                     </li>
@@ -191,7 +191,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="../../index.html">
+                        <a class="nav-link" href="../../admin/homeadmin">
                             <span class="menu-title">Dashboard</span>
                             <i class="mdi mdi-home menu-icon"></i>
                         </a>
@@ -272,6 +272,7 @@
             <div class="main-panel">
                 <div class="content-wrapper">
                     @RenderBody()
+                    @RenderSection("Scripts", required: false)
                 </div>
                 <!-- content-wrapper ends -->
                 <!-- partial:../../partials/_footer.html -->
